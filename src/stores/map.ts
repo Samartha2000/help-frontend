@@ -6,6 +6,7 @@ import {IMapStore, SummaryMarker} from "../interfaces";
 export const MapStore: IMapStore = store({
     lat: 17.3850,
     lng: 78.4867,
+    open: false,
     summaryMarkers: [],
 });
 
@@ -16,5 +17,8 @@ export const MapActions = {
     },
     setSummary(summaryMarkers: SummaryMarker[]) {
         MapStore.summaryMarkers = summaryMarkers;
+    },
+    setMapToggle(open: boolean) {
+        MapStore.open = open;
     }
 };

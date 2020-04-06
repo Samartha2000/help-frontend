@@ -6,7 +6,8 @@ export interface SummaryMarker {
 
 export interface IMapStore {
     lat: any
-    lng: any
+    lng: any,
+    open: boolean,
     summaryMarkers: SummaryMarker[]
 }
 

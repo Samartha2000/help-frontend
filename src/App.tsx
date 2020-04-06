@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { view } from "react-easy-state";
 import { usePosition } from "use-position";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
@@ -16,7 +16,6 @@ import {RequestListSelector} from "./components/RequestListSelector";
 import {Summary} from "./components/Summary";
 import {AdminModal} from "./components/AdminModal";
 import {UIActions} from "./stores/ui";
-
 
 export const App = view(() => {
 
@@ -57,7 +56,7 @@ export const App = view(() => {
 
     return (
         <>
-            <Map />
+            {MapStore.open ? <Map/> : ""}
             <Div100vh style={{height: "50rvh", maxHeight: "50rvh"}}>
                 <Switch>
                     <ProtectedRoute exact path="/">

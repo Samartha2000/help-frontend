@@ -10,6 +10,7 @@ import * as api from "../api";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Select from "react-select";
 import {UIActions} from "../stores/ui";
+import { MapStore, MapActions } from "../stores/map";
 
 
 export const RequestList = view(({ all }: { all: boolean }) => {
@@ -73,6 +74,10 @@ export const RequestList = view(({ all }: { all: boolean }) => {
         }
     };
 
+    const mapToggle = () => {
+        MapActions.setMapToggle(!MapStore.open);
+    }
+
     return (
         <Card className="h-100 mx-auto">
             <Card.Header>
@@ -81,6 +86,16 @@ export const RequestList = view(({ all }: { all: boolean }) => {
                         {all ? "All" : "My" } Requests
                         {isLoading && <FontAwesomeIcon pulse icon="spinner" className="ml-3" />}
                     </Col>
+                    <Col className="justify-content-end d-flex px-0 text-right my-auto">
+                        <Form>
+                            <Form.Check
+                                type="switch"
+                                id="mapToggle"
+                                label="Toggle Map"
+                                onClick={mapToggle}
+                            />
+                        </Form>
+                    </Col> 
                     {requests.length > 0 &&
                     <Col className="justify-content-end d-flex px-0 text-right requests-list-filter">
                       <DropdownButton id="filters-dropdown-button" variant="outline-primary" title="Filters" drop="up" className="mr-2">
